@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<foos>
+  <foo>
+    <bar number="123">
+      <name>ohai</name>
+      <baz>something</baz>
+    </bar>
+    <baz number="456">
+      <name>bob</name>
+    </baz>
+  </foo>
+  <foo>
+    <bar number="234">
+      <name>alice</name>
+      <baz>eve</baz>
+      <checked/>
+    </bar>
+    <baz number="567">
+      <name>mallory</name>
+    </baz>
+  </foo>
+  <foo>
+    <bar number="345">
+      <name>unicöde</name>
+      <baz>ŏ hai</baz>
+      <checked/>
+    </bar>
+    <baz number="678">
+      <name>y’all</name>
+    </baz>
+  </foo>
+</foos>
