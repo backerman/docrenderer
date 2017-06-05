@@ -13,25 +13,6 @@
 (def ^:private stylesheets-dir
   (env :stylesheets-dir))
 
-(defn- list-available-stylesheets [dir]
-  "Given a directory as a java.io.File, list the available stylesheets
-   contained therein. A document is an available stylesheet if it is a
-   regular file and its name ends in .xsl."
-  (filter (every-pred fs/file? fs/readable?)
-          (fs/find-files dir #".*\.xsl$")))
-
-(def ^:private stylesheets
-  (try
-    (into {}
-          (map (fn [x] [(keyword (fs/base-name x true)) x])
-               (list-available-stylesheets stylesheets-dir)))))
-
-(def ^:private stylesheet
-  "The compiled stylesheets."
-  (into {}
-        (for [[k v] stylesheets]
-          [k (transform/compile-stylesheet-file v)])))
-
 (def ^:private config-file
   (env :config-file))
 
