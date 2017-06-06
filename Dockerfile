@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
 # Set up application directory.
-ENV APPDIR /bidsheets
+ENV APPDIR /docrenderer
 RUN mkdir -p "$APPDIR" && chmod -R 775 "$APPDIR"
 
 # Download dependencies.
