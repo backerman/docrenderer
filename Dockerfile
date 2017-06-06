@@ -18,3 +18,9 @@ COPY . "$APPDIR"
 RUN mv "$(lein uberjar | sed -n 's/^Created \(.*standalone\.jar\)/\1/p')" app-standalone.jar
 CMD ["java", "-jar", "app-standalone.jar"]
 EXPOSE 3000
+
+# Add default locations for config and stylesheets.
+ENV STYLESHEETS_DIR="$APPDIR/stylesheets" \
+    CONFIG_FILE="$APPDIR/config.toml"
+RUN mkdir "$STYLESHEETS_DIR" && chmod 775 "$STYLESHEETS_DIR"
+

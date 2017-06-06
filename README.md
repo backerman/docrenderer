@@ -5,16 +5,24 @@ stylesheet.
 
 ## Configuration
 
-Two environment variables must be set:
+Two environment variables must be set if not using the provided Dockerfile:
 
 * `CONFIG_FILE` is the path of a configuration file; see `config.sample.toml`
-for a sample file.
+for a sample file. (This value defaults to `/docrenderer/config.toml` in the
+provided Dockerfile.)
 * `STYLESHEETS_DIR` is a directory containing XSL stylesheets. All stylesheet
-filenames in `CONFIG_FILE` are relative to this directory.
+filenames in `CONFIG_FILE` are relative to this directory. (This value
+defaults to `/docrenderer/stylesheets` in the provided Dockerfile.)
 
-## Usage
+## Usage example
 
-`docker build -t docrenderer:latest . && docker stop docrenderer && docker rm docrenderer && docker run -d --name=docrenderer -p 127.0.0.1:3000:3000 docrenderer:latest`
+    docker build -t docrenderer:testme . && \
+    docker stop docrenderer && \
+    docker rm docrenderer && \
+    docker run -d --name=docrenderer -p 127.0.0.1:3000:3000 \
+      -v /some/stylesheets/directory:/docrenderer/stylesheets \
+      -v /some/config/file.toml:/docrenderer/config.toml \
+        docrenderer:testme
 
 ## License
 
