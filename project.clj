@@ -4,7 +4,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :plugins [[lein-ring "0.11.0"]
-            [lein-environ "1.1.0"]]
+            [lein-environ "1.1.0"]
+            [lein-cljfmt "0.5.6"]]
   :ring {:handler org.facefault.docrenderer.core/handler}
   :profiles {
              :uberjar {:aot :all}

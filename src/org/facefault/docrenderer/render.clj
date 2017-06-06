@@ -30,7 +30,7 @@
   "Create a FOP from the factory and set to PDF output."
   [factory output-stream]
   (.newFop factory MimeConstants/MIME_PDF output-stream))
- 
+
 (defn transform-and-render
   "Transform the input XML (in-stream) with the provided (compiled)
   stylesheet."

@@ -35,9 +35,9 @@
                    (list xsl (nup "across") (nup "down"))
                    (list xsl 1 1))]
         (POST
-         (str "/" routename)
-         []
-         (apply handler/render-handler args))))))
+          (str "/" routename)
+          []
+          (apply handler/render-handler args))))))
 
 (defn routes []
   "Return this application's routes as specified in the configuration file."

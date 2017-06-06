@@ -21,10 +21,10 @@
     (let [rendered-fn (File/createTempFile "rendered" ".pdf")
           nup-fn  (File/createTempFile "nup" ".pdf")]
       (with-open [in-stream (-> request
-                               :params
-                               :data
-                               :tempfile
-                               io/input-stream)]
+                                :params
+                                :data
+                                :tempfile
+                                io/input-stream)]
         (with-open [rendered (io/output-stream rendered-fn)]
           (render/transform-and-render my-stylesheet in-stream rendered))
         (with-programs [pdfnup]
@@ -42,13 +42,13 @@
                        :err err-writer
                        :verbose true})
               (-> (response/response
-                  (ring-io/piped-input-stream
-                   (fn [out-stream]
-                     (io/copy nup-fn out-stream)
-                     (.flush out-stream)
-                     (.delete rendered-fn)
-                     (.delete nup-fn))))
-                 (response/content-type "application/pdf"))
+                   (ring-io/piped-input-stream
+                    (fn [out-stream]
+                      (io/copy nup-fn out-stream)
+                      (.flush out-stream)
+                      (.delete rendered-fn)
+                      (.delete nup-fn))))
+                  (response/content-type "application/pdf"))
               (catch Exception e
                 (.flush out-writer)
                 (.flush err-writer)
@@ -59,8 +59,7 @@
                            "\nSTDERR:\n"
                            (.toString err-writer))
                 {:status 500
-                 :body "<h1></h1>"
-                 }))))))))
+                 :body "<h1></h1>"}))))))))
 
 (defn wrap-multipart
   [handler]
@@ -76,8 +75,8 @@
       (catch Exception e
         (log/error "Exception thrown when processing request:" e)
         (-> "html/error.html"
-           io/resource
-           slurp ; response/file-response would want a File, not a URL.
-           response/response
-           (response/content-type "text/html")
-           (response/status 503))))))
+            io/resource
+            slurp ; response/file-response would want a File, not a URL.
+            response/response
+            (response/content-type "text/html")
+            (response/status 503))))))

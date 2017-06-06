@@ -16,8 +16,8 @@
   [xsl]
   (try
     (-> (Processor. false)
-       .newXsltCompiler
-      (.compile (StreamSource. xsl)))
+        .newXsltCompiler
+        (.compile (StreamSource. xsl)))
     (catch Exception e
       (log/error "Couldn't compile stylesheet!" e))))
 
@@ -31,8 +31,8 @@
   "Create a Saxon s9api destination from an output stream."
   [outstream]
   (-> (XMLOutputFactory/newFactory)
-     (.createXMLStreamWriter outstream)
-     XMLStreamWriterDestination.))
+      (.createXMLStreamWriter outstream)
+      XMLStreamWriterDestination.))
 
 (defn sax-destination
   "Create a Saxon s9api destination from a SAX ContentHandler."

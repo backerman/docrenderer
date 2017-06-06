@@ -20,17 +20,17 @@
             [compojure.route :as route]))
 
 (defn rendering-routes []
-    (apply routes
-           (concat
-            (config/routes)
-            (list (route/not-found "<h1>Error!</h1>")))))
+  (apply routes
+         (concat
+          (config/routes)
+          (list (route/not-found "<h1>Error!</h1>")))))
 
 (defn -main []
   (try
     (jetty/run-jetty (-> (rendering-routes)
-                        wrap-exceptions
-                        wrap-multipart
-                        logger/wrap-with-logger)
+                         wrap-exceptions
+                         wrap-multipart
+                         logger/wrap-with-logger)
                      {:port 3000})
     (catch Exception e
       (log/fatal "Unable to start application:" e))))
