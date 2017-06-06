@@ -1,5 +1,6 @@
 /profiles.clj
 /.lein-env
+/config.toml
 
 # Created by https://www.gitignore.io/api/clojure,leiningen,emacs,maven
 
