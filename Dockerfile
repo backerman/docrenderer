@@ -3,7 +3,7 @@ MAINTAINER Brad Ackerman "brad@facefault.org"
 
 # Download fonts and non-Java programs we need.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-                        fonts-junction pdfjam texlive-latex-recommended \
+                        pdfjam texlive-latex-recommended \
   && rm -rf /var/lib/apt/lists/*
 
 # Set up application directory.

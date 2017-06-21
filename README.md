@@ -24,6 +24,12 @@ defaults to `/docrenderer/stylesheets` in the provided Dockerfile.)
       -v /some/config/file.toml:/docrenderer/config.toml \
         docrenderer:testme
 
+## Custom fonts
+
+To use fonts beyond the Base 14, mount the directory containing the fonts
+you wish to use into /usr/local/share/fonts on the host by adding a `-v`
+option, e.g. `-v /some/host/directory/app/fonts:/usr/local/share/fonts`.
+
 ## License
 
 Copyright © 2017 Brad Ackerman.
