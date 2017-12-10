@@ -36,6 +36,5 @@
   stylesheet."
   [in-stylesheet in-stream out-stream]
   (let [fop (new-fop (new-factory) out-stream)
-        transformer (.load in-stylesheet)
         xsl-out (xform/sax-destination (.getDefaultHandler fop))]
     (xform/transform in-stylesheet in-stream xsl-out)))
