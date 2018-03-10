@@ -16,6 +16,9 @@ defaults to `/docrenderer/stylesheets` in the provided Dockerfile.)
 
 ## Usage example
 
+The configuration file must be specified with an absolute path; a relative
+path will cause it to mount as if it were a directory.
+
     docker build -t docrenderer:testme . && \
     docker stop docrenderer && \
     docker rm docrenderer && \
@@ -32,7 +35,7 @@ option, e.g. `-v /some/host/directory/app/fonts:/usr/local/share/fonts`.
 
 ## License
 
-Copyright © 2017 Brad Ackerman.
+Copyright © 2017--8 Brad Ackerman.
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
