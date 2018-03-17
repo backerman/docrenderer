@@ -14,24 +14,23 @@ provided Dockerfile.)
 filenames in `CONFIG_FILE` are relative to this directory. (This value
 defaults to `/docrenderer/stylesheets` in the provided Dockerfile.)
 
-## Usage example
-
-The configuration file must be specified with an absolute path; a relative
-path will cause it to mount as if it were a directory.
-
-    docker build -t docrenderer:testme . && \
-    docker stop docrenderer && \
-    docker rm docrenderer && \
-    docker run -d --name=docrenderer -p 127.0.0.1:3000:3000 \
-      -v /some/stylesheets/directory:/docrenderer/stylesheets \
-      -v /some/config/file.toml:/docrenderer/config.toml \
-        docrenderer:testme
-
 ## Custom fonts
 
 To use fonts beyond the Base 14, mount the directory containing the fonts
-you wish to use into /usr/local/share/fonts on the host by adding a `-v`
-option, e.g. `-v /some/host/directory/app/fonts:/usr/local/share/fonts`.
+you wish to use into /usr/local/share/fonts on the host.
+
+## Usage example
+
+N.B.: Docker bind mounts must be specified with their absolute pathnames.
+
+    docker build -t docrenderer:testme .
+    docker stop docrenderer
+    docker rm docrenderer
+    docker run -d \
+    --mount=type=bind,source=/some/path/config.toml,destination=/docrenderer/config.toml \
+    --mount=type=bind,source=/some/path/myxsls,destination=/docrenderer/stylesheets \
+    --mount=type=bind,source=/some/path/myfonts,destination=/usr/local/share/fonts \
+    --name=docrenderer -p 3000:3000 backerman/docrenderer
 
 ## License
 
