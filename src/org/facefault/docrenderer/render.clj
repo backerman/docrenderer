@@ -14,7 +14,7 @@
   "Copies a classpath resource to a file, returning a java.io.File.
   The caller should delete the file when finished with it."
   [resource-name]
-  (let [tempfile (File/createTempFile "fopconfig" "xml")]
+  (let [tempfile (File/createTempFile "fopconfig" ".xml")]
     (io/copy (-> resource-name io/resource slurp) tempfile)
     tempfile))
 
