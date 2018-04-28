@@ -8,7 +8,7 @@
             [lein-cljfmt "0.5.6"]]
   :ring {:handler org.facefault.docrenderer.core/handler}
   :profiles {
-             :uberjar {:aot :all}
+             :uberjar {:aot [org.facefault.docrenderer.main]}
              }
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring/ring-core "1.5.1"]
@@ -31,4 +31,4 @@
                  [environ "1.1.0"]
                  [clj-toml "0.3.1"]
                  ]
-  :main org.facefault.docrenderer.core)
+  :main org.facefault.docrenderer.main)

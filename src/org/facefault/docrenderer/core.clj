@@ -25,7 +25,7 @@
           (config/routes)
           (list (route/not-found "<h1>Error!</h1>")))))
 
-(defn -main []
+(defn start []
   (try
     (jetty/run-jetty (-> (rendering-routes)
                          wrap-exceptions
