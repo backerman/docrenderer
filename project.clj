@@ -10,14 +10,14 @@
   :profiles {
              :uberjar {:aot [org.facefault.docrenderer.main]}
              }
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [ring/ring-core "1.5.1"]
-                 [ring/ring-jetty-adapter "1.5.1"]
-                 [ring/ring-defaults "0.2.3"]
-                 [ring-logger "0.7.7"]
-                 [compojure "1.5.2"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [ring/ring-core "1.7.1"]
+                 [ring/ring-jetty-adapter "1.7.1"]
+                 [ring/ring-defaults "0.3.2"]
+                 [ring-logger "1.0.1"]
+                 [compojure "1.6.1"]
                  [net.sf.saxon/Saxon-HE "9.7.0-18"]
-                 [org.clojure/tools.logging "0.3.1"]
+                 [org.clojure/tools.logging "0.4.1"]
                  [org.apache.logging.log4j/log4j-api "2.8.2"]
                  [org.apache.logging.log4j/log4j-core "2.8.2"]
                  [org.apache.xmlgraphics/fop "2.2"]
