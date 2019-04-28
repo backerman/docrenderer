@@ -2,7 +2,8 @@
 ;; To get around this for now, we have this stub main that calls the actual
 ;; main.
 
-(ns org.facefault.docrenderer.main)
+(ns org.facefault.docrenderer.main
+  (:gen-class))
 
 (defn -main
   []
