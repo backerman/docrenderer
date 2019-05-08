@@ -22,6 +22,7 @@ FROM alpine:edge
 ENV LANG C.UTF-8
 MAINTAINER Brad Ackerman "brad@facefault.org"
 
+RUN addgroup -g 31336 docrenderer && adduser -u 31336 -G docrenderer -D docrenderer
 RUN apk update && apk upgrade --no-cache && apk add --no-cache texlive openjdk8-jre \
     fontconfig ttf-dejavu ghostscript-fonts \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> \
@@ -39,5 +40,6 @@ ENV STYLESHEETS_DIR="$APPDIR/stylesheets" \
     FONTS_DIR="/usr/local/share/fonts"
 RUN mkdir "$STYLESHEETS_DIR" && chmod 775 "$STYLESHEETS_DIR"
 RUN mkdir -p "$FONTS_DIR" && chmod 775 "$FONTS_DIR"
+USER docrenderer
 CMD ["java", "-jar", "app-standalone.jar"]
 EXPOSE 3000
