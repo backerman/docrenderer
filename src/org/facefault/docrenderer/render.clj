@@ -26,6 +26,8 @@
     (.delete tempfile)
     factory))
 
+(def ^:private my-factory (new-factory))
+
 (defn- new-fop
   "Create a FOP from the factory and set to PDF output."
   [factory output-stream]
@@ -35,6 +37,6 @@
   "Transform the input XML (in-stream) with the provided (compiled)
   stylesheet."
   [in-stylesheet in-stream out-stream]
-  (let [fop (new-fop (new-factory) out-stream)
+  (let [fop (new-fop my-factory out-stream)
         xsl-out (xform/sax-destination (.getDefaultHandler fop))]
     (xform/transform in-stylesheet in-stream xsl-out)))
