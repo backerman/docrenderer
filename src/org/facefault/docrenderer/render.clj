@@ -26,7 +26,7 @@
     (.delete tempfile)
     factory))
 
-(def ^:private my-factory (new-factory))
+(def my-factory (new-factory))
 
 (defn- new-fop
   "Create a FOP from the factory and set to PDF output."
