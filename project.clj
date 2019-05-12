@@ -9,6 +9,7 @@
   :ring {:handler org.facefault.docrenderer.core/handler}
   :profiles {
              :uberjar {:aot [org.facefault.docrenderer.main]}
+             :repl {:dependencies [[org.clojure/tools.namespace "0.2.11"]]}
              }
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [ring/ring-core "1.7.1"]
