@@ -28,6 +28,18 @@
     (.setFontInfo document-handler fi)
     fi))
 
+(defn string-width
+  "Get the width (approximate) of a `text` string in points."
+  [text font-info font-triplet font-size]
+  ; Is font size decipoints?
+  (let [font (.getFontInstance font-info font-triplet font-size)
+        metrics (.getFontMetrics font)]
+    (/ (reduce (fn [acc c] (+ acc (.getWidth metrics
+                                            (int (.mapChar font c))
+                                            font-size)))
+               ;; FIXME does this work for non-BMP characters?
+               0 (.toCharArray text)) 1000)))
+
 (defn- display-fonts
   ;; Handy debugging routine.
   []
