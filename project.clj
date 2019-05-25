@@ -8,7 +8,8 @@
             [lein-cljfmt "0.6.4"]]
   :ring {:handler org.facefault.docrenderer.core/handler}
   :profiles {
-             :uberjar {:aot [org.facefault.docrenderer.main]}
+             :uberjar {:aot [org.facefault.docrenderer.main
+                             org.facefault.docrenderer.textwidth-ext]}
              :repl {:dependencies [[org.clojure/tools.namespace "0.2.11"]]}
              }
   :dependencies [[org.clojure/clojure "1.10.0"]

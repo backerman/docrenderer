@@ -9,15 +9,18 @@
            org.xml.sax.InputSource
            org.xml.sax.helpers.XMLReaderFactory)
   (:require [clojure.java.io :as io]
-            [clojure.tools.logging :as log]))
+            [clojure.tools.logging :as log]
+            [org.facefault.docrenderer.textwidth-ext :as tw]))
 
 (defn compile-stylesheet
   "Compiles an XSL stylesheet from a provided InputStream."
   [xsl]
   (try
-    (-> (Processor. false)
-        .newXsltCompiler
-        (.compile (StreamSource. xsl)))
+    (let [processor (Processor. false)]
+      (.registerExtensionFunction processor (tw/get-extension processor))
+      (-> processor
+          .newXsltCompiler
+          (.compile (StreamSource. xsl))))
     (catch Exception e
       (log/error "Couldn't compile stylesheet!" e))))
 
