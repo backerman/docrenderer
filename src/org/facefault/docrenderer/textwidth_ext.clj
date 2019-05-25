@@ -56,7 +56,7 @@
       []
     (hasSideEffects [] true)
     (dependsOnFocus [] true)
-    (getFunctionName []
+    (getFunctionQName []
       (StructuredQName. "dr" our-uri "suggest-font-size"))
     (getArgumentTypes []
       (into-array SequenceType []))
